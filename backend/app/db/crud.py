@@ -12,7 +12,7 @@ async def get_all_links():
     return links
 
 async def save_link(code: str, original_url: HttpUrl, createdAt: datetime, expireAt: datetime):
-    await link_collection.insert_one({"code": code, "original_url": str(original_url),"createdAt": createdAt if createdAt else datetime.utcnow(),"expireAt": expireAt})
+    await link_collection.insert_one({"code": code, "original_url": str(original_url),"createdAt": createdAt,"expireAt": expireAt})
 
 async def get_link(code: str):
     document = await link_collection.find_one({"code": code})
